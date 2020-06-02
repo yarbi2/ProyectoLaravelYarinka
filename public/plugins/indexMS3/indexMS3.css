@@ -1,0 +1,476 @@
+
+/*Formatea todas las etiquetas*/
+*{
+	margin: 0px;
+	padding: 0px;
+	font-family: Helvetica Neue; 
+}
+
+/*Etiqueta para la foto de fondo, */
+section#contenedor1{
+	position: fixed;/*posicion fija en pantalla, no tiene scroll*/
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+
+	z-index: -1;/*Lo coloca en la parte mas atras de la pagina, por detras del resto de etiquetas*/
+
+	/*background-image: url(arbol.jpeg);*/
+	background-size: cover;
+	background-position: center 0px;
+	background-repeat: no-repeat;
+	overflow: hidden;/*Evita que la imagen redimensione la pagina*/
+
+}
+
+
+/*MENU DE OPCIONES*/
+#header{
+padding:2vh 0 2vh 0;
+
+	display: grid;
+  grid-template-columns: repeat(4, 16vw);
+  grid-template-rows: repeat(3,25vh);
+
+  /*Distribucion de el menu mediante, grids, y template areas*/
+    grid-template-areas: 
+    "a d d b"
+    "c d d e"
+    "f f f e";
+      background-color: rgba(0,0,0,0.4);/*creara un fondo medio transparente, que oscurece algo el fondo que quede atras*/
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+     grid-column-gap: 1vh;/*distancia entre columnas*/
+	grid-row-gap: 1vh;/*distancia entre lineas*/
+	transition-duration: 2s;/*tiempo q tarda en darse un cambio en la etiqueta, una transicion*/
+	list-style: none;/*quita los estilos de lista*/
+	margin-top: 15vh;
+
+}
+
+
+/*hover que hace que el menu se separe un poco mas al pasar sobre el*/
+#header:hover {
+
+	grid-column-gap: 3vh;
+	grid-row-gap: 1.5vh;
+
+
+}
+
+
+/*Caja que contiene cada boton del menu*/
+div.contenedor{
+	height: 100%;
+	display: flex;/*Usado para facilitar el centrado de lo que contiene la etiqueta*/
+	align-items: center;/*Usado para facilitar el centrado de lo que contiene la etiqueta*/
+	justify-content: center;/*Usado para facilitar el centrado de lo que contiene la etiqueta*/
+
+	transition-duration: 1.5s;/*tiempo q tarda en darse un cambio en la etiqueta, una transicion*/
+		cursor: pointer;/*Convierte el cursor en una Mano al colocarse encima*/
+}
+
+
+/* LAS CAJAS DEL MENU DEL 1 AL 6*/
+div#uno{
+	background-color: rgb(22,107,162);
+	grid-area: a;/*SELECCIONA EL GRID AREA AL QUE HACE REFERENCIA, EN EL TEMPLATE*/
+	border-radius: 75% 25% 75% 25%  / 60% 60% 40% 40%; /*BORDER-RADIUS CON 8 PARAMETROS PERMITEN, FORMAR CURVAS IRREGULARES CON DISTINTOS ORIGENES A LO LARGO DE LA CAJA*/
+
+	box-shadow: inset 0 0 6vh 1.5vh #00233a;/*Sombreado de cajas, Pero INSET el cual permite dibujar la sombra, pero de manera interna, el que puede llegar a dar un efecto de 3D*/
+	/*box-shadow: inset 0 0 3.5vh 1vh #c3b084;*/
+}
+
+div#dos{
+	grid-area: b;/*SELECCIONA EL GRID AREA AL QUE HACE REFERENCIA, EN EL TEMPLATE*/
+	background-color: rgb(22,145,190);
+	border-radius: 30% 70% 70% 30% / 60% 60% 40% 40% ;/*BORDER-RADIUS CON 8 PARAMETROS PERMITEN, FORMAR CURVAS IRREGULARES CON DISTINTOS ORIGENES A LO LARGO DE LA CAJA*/
+
+	box-shadow: inset 0 0 6vh 4vh #006a91;/*Sombreado de cajas, Pero INSET el cual permite dibujar la sombra, pero de manera interna, el que puede llegar a dar un efecto de 3D*/
+}
+
+div#tres{
+	background-color: rgb(233,147,26);	
+	border-radius: 30% 70% 30% 70% / 60% 40% 60% 40% ;/*BORDER-RADIUS CON 8 PARAMETROS PERMITEN, FORMAR CURVAS IRREGULARES CON DISTINTOS ORIGENES A LO LARGO DE LA CAJA*/
+	grid-area: c;/*SELECCIONA EL GRID AREA AL QUE HACE REFERENCIA, EN EL TEMPLATE*/
+	box-shadow: inset 0 0 5vh 3vh #8c5100;/*Sombreado de cajas, Pero INSET el cual permite dibujar la sombra, pero de manera interna, el que puede llegar a dar un efecto de 3D*/
+}
+
+div#cuatro{
+	background-color: rgb(208,101,3);
+	border-radius: 60% 40% 40% 60% / 60% 40% 60% 40%;/*BORDER-RADIUS CON 8 PARAMETROS PERMITEN, FORMAR CURVAS IRREGULARES CON DISTINTOS ORIGENES A LO LARGO DE LA CAJA*/
+	grid-area: d;/*SELECCIONA EL GRID AREA AL QUE HACE REFERENCIA, EN EL TEMPLATE*/
+	box-shadow: inset 0 0 5vh 2vh #723600;/*Sombreado de cajas, Pero INSET el cual permite dibujar la sombra, pero de manera interna, el que puede llegar a dar un efecto de 3D*/
+	/*box-shadow: inset 0 0 7vh 3vh #8b8b8b;*/
+}
+
+div#cinco{
+	background-color: rgb(12, 140, 57);
+	grid-area: e;/*SELECCIONA EL GRID AREA AL QUE HACE REFERENCIA, EN EL TEMPLATE*/
+	border-radius: 55% 45% 55% 45% / 55% 45% 55% 45%;/*BORDER-RADIUS CON 8 PARAMETROS PERMITEN, FORMAR CURVAS IRREGULARES CON DISTINTOS ORIGENES A LO LARGO DE LA CAJA*/
+	box-shadow: inset 0 0 7vh 3vh #085924;/*Sombreado de cajas, Pero INSET el cual permite dibujar la sombra, pero de manera interna, el que puede llegar a dar un efecto de 3D*/
+}
+
+div#seis{
+	background-color: rgb(70, 163, 158);
+	grid-area: f;/*SELECCIONA EL GRID AREA AL QUE HACE REFERENCIA, EN EL TEMPLATE*/
+	border-radius: 20% 80% 80% 20% / 40% 70% 35% 65%;/*BORDER-RADIUS CON 8 PARAMETROS PERMITEN, FORMAR CURVAS IRREGULARES CON DISTINTOS ORIGENES A LO LARGO DE LA CAJA*/
+	box-shadow: inset 0 0 7vh 6vh #327774;/*Sombreado de cajas, Pero INSET el cual permite dibujar la sombra, pero de manera interna, el que puede llegar a dar un efecto de 3D*/
+}
+/* FINAL DE LAS CAJAS DEL MENU DEL 1 AL 6*/
+
+
+
+/*TEXTO DENTRO DE LAS CAJAS DEL MENU*/
+p.texto{
+	font-size: 1.8em;/*unidad em la cual usa como referencia el resto de fontsize para adptarse a ellos*/
+	color:white;
+	text-align: center;
+	opacity: .6;/*cambia la transparencia del texto*/
+	font-weight: bold;/*estilo en Negrita*/
+	
+	font-family: titulo;
+	transition-duration: 0.4s;
+}
+
+/*hover sobre cada boton del menu activado*/
+div.contenedor:hover{
+	transform: scale(1.25);/*aumenta la imagen x1.25 lo cual da un efecto de zoom in*/
+	filter: hue-rotate(260deg);/*rota 260º en hue-rotate, el cual le hace pasar por varios colores dentro del registro de hue`*/
+
+}
+
+/*hover sobre cada boton del menu activado que afecta al texto interno de p*/
+div.contenedor:hover p.texto{
+	transform: scale(1.25);
+	text-decoration: underline;
+	padding-bottom: 4vh;
+	opacity: 1;
+}
+
+
+
+/*CONTIENE EL BOTON DESPLEGAR, AUNQ SE LLAME BODY POR ORGANIZACION*/
+section#body{
+	width: 100%;
+	min-height: 100px;
+	overflow: hidden;/*no permite q sobresalga el contenido d la caja*/
+
+	margin-top: 20vh;
+}
+
+/*BOTON PARA DESPLEGAR HACIA ABAJO*/
+div#desplegar{
+	margin: auto;
+	/*IIIMMMPPP   PERMITE HACER UNIDADES MAS RESPOSIVE, DADO QUE PODEMOS HACER, RELACIONES CON VW Y VH COMO ES EL CASO*/
+	width: calc(12vw + 4vh);/*calc nos permite hacer operaciones aritmeticas entre distintas unidades, y de este modo sera responsive tanto al cambio d dimensiones en altura y en anchura*/
+
+	border: 2px solid white;
+	padding: 5px;
+	border-radius: 10px 0px 10px 0px;
+	cursor: alias;/*el cursor pasa a tener una flecha distinta*/
+
+	
+}
+
+
+
+p#tituloDesp{
+	text-align: center;
+	font-weight: lighter;
+	/*IIIMMMPPP   PERMITE HACER UNIDADES MAS RESPOSIVE, DADO QUE PODEMOS HACER, RELACIONES CON VW Y VH COMO ES EL CASO*/
+	font-size: calc(1.5vh + 0.75vw);/*calc nos permite hacer operaciones aritmeticas entre distintas unidades, y de este modo sera responsive tanto al cambio d dimensiones en altura y en anchura*/
+	color: white;
+
+}
+
+p#flecha{
+	transform: rotate(270deg);/*ROTO EL CARACTER ">" PARA QUE APUNTE HACIA ABAJO*/
+	text-align: center;
+	color: white;
+	font-size: 1.3em;
+}
+
+/*cAJA QUE CONTIENE AL MENU PRINCIPAL*/
+section#vacio{
+	width: 98%;
+	margin: auto;
+}
+
+/*TIPO DE LETRA DEL TITULO*/
+h1 span{
+		font-family: titulo;
+}
+
+/*TITULO*/
+h1#titulo{
+	text-align: center;
+	color: lightblue;/*EL COLOR BASE DE LA FUEENTE SERA ESTE, DESPUES SOBREESCRIBIREMOS EL D ALGUN CARACTER*/
+	user-select: none;/*NO PERMITE AL USUARIO SELECCIONAR Y EVITA QUE EL ETXTO SE VUELVA AZUL*/
+	font-size: 6em;
+	width: 100%;
+	padding: 1em 0 1em 0;
+	background: rgba(0,0,0,0.2);/*PINTA EL FONDO CON OPACIDAD AL 20%*/
+	margin-top: 23vh;
+	/*border-bottom: 0.1vh solid white;
+	border-top: 0.1vh solid white;
+*/
+}
+
+/*LOGO : HEAT*/
+button#logo{
+	display: block;
+	position: fixed;
+	bottom: 0px;
+	width: calc(8vh + 3vw);/*IIIIIIMMMMMPPPPPP PODEMOS HACER RELACIONES EN UNIDADES DE VIEWPORT PARA QUE SEAN MAS RESPONSIVE AUUUN A UALQUIER CAMBIO*/
+	height: calc(8vh + 3vw);/*IIIIIIMMMMMPPPPPP PODEMOS HACER RELACIONES EN UNIDADES DE VIEWPORT PARA QUE SEAN MAS RESPONSIVE AUUUN A UALQUIER CAMBIO*/
+	margin: 2vh;
+	
+/*background-image: url('{{asset("plugins/indexMS3/rsc/logo.jpg")}}');*/
+	z-index: 1;/*de esta manera se posicionara por encima del fondo, que tenia z-indez=-1*/
+	
+	background-repeat: no-repeat;
+	background-size: cover;/*que la imagen cubra la caja, no la contenga solo*/
+
+	overflow: hidden;
+	outline: none;/*quita el borde predeterminado del boton*/
+
+	/*clip-path: polygon(1% 9%, 20% 21%, 10% 1%, 89% 1%, 81% 21%, 99% 9%, 99% 90%, 78% 77%, 90% 99%, 9% 99%, 21% 80%, 1% 90%);*/
+	/*clip-path: polygon(1% 9%, 50% 10%, 10% 1%, 89% 1%, 90% 50%, 99% 9%, 99% 90%, 50% 90%, 90% 99%, 9% 99%, 10% 50%, 1% 90%);*/
+	/*clip-path: polygon(1% 9%, 60% 20%, 10% 1%, 89% 1%, 90% 20%, 99% 9%, 99% 90%, 40% 80%, 90% 99%, 9% 99%, 10% 80%, 1% 90%);*/
+
+	/*CLIP-PATH: PERMITE DEFINIR QUE PARTE QUEREMOS VISIBLE Y CUAL TRANSPARENTE, MEDIANTE POLIGONOS Y COORDENADAS, CADA PAREJA DE VALORES HACE REFERENCIA a X y Y*/
+	clip-path: polygon(1% 13%, 60% 20%, 13% 1%, 89% 1%, 90% 20%, 99% 9%, 99% 85%, 40% 80%, 88% 99%, 9% 99%, 10% 80%, 1% 90%);
+
+		cursor: pointer;/*el cursor se vuelve una mano al pasar pro encima*/
+		border: none;
+
+
+}
+
+/*BOTON PARA DESPLEGAR HACIA ARRIBA*/
+button#arriba{
+	display: none;/*no existira esta etiqueta hasta q mediante js se le añada el atributo display=block por ejemplo*/
+	position: fixed;/*posicion fija en pantalla*/
+	bottom: 0px;
+	width: calc(4vh + 2vw);/*IIIIIIMMMMMPPPPPP PODEMOS HACER RELACIONES EN UNIDADES DE VIEWPORT PARA QUE SEAN MAS RESPONSIVE AUUUN A UALQUIER CAMBIO*/
+	height: calc(4vh + 2vw);/*IIIIIIMMMMMPPPPPP PODEMOS HACER RELACIONES EN UNIDADES DE VIEWPORT PARA QUE SEAN MAS RESPONSIVE AUUUN A UALQUIER CAMBIO*/
+	margin: 2vh 2vh 3vh 92vw;
+	
+
+/*	background-image: url(aaa.png);
+*/	z-index: 1;
+	
+	background-repeat: no-repeat;/*no permite q la imagen se duplique para encajar en la caja*/
+	background-size: cover;/*la imagne cubrira la caja, no solo la contendra*/
+	border-radius: 100% 100% 100% 100%;
+	overflow: hidden;
+	outline: none;/*quita el borde predeterminado del boton*/
+	cursor: alias;/*el cursor pasa a tener una flecha distinta*/
+
+
+}
+
+
+/*COOKIES*/
+p#cookies{
+	display: none;/*no existira esta etiqueta hasta q mediante js se le añada el atributo display=block por ejemplo*/
+
+	position: fixed;/*posicion fija en pantalla*/
+	bottom: 0px;
+
+	margin: 2vh 20vh 3vh 20vh;
+	color: #c63d3d;
+	font-size: bold;/*LETRA EN NEGRITA*/
+
+
+	z-index: 1;/*le introducimos un indice de +1 para q aparezca por delante de otras etiquetas*/
+
+	font-size:1vw;
+	 background-color: rgba(0,0,0,0.1);
+	 padding-left: 0.5vw;
+
+}
+
+
+
+
+/*CADA CARACTER DEL TITULO*/
+h1 span{
+		cursor: pointer;/*el cursor se vuelve una mano al pasar pro encima*/
+		user-select: none;/*NO PERMITE AL USUARIO SELECCIONAR Y EVITA QUE EL ETXTO SE VUELVA AZUL*/
+		/*transform-origin: 0% 100% 0px;*/
+
+}
+
+/*METODO PARA HACER REFERENCIA A ETIQUETAS HIJAS HERMANAS*/
+
+/*HACE REFERENCIA AL CUARTO SPAN DE H1, AL CARACTER 'M' CONCRETAMENTE*/
+h1#titulo span:nth-child(4){
+	color: #c52b2b;
+}
+
+/*HACE REFERENCIA AL OCTAVO SPAN DE H1, AL CARACTER 'S' CONCRETAMENTE*/
+h1#titulo span:nth-child(8){
+	color: #980000;
+}
+/*HACE REFERENCIA AL DECIMOTERCER SPAN DE H1, AL CARACTER 'M' CONCRETAMENTE*/
+h1#titulo span:nth-child(13){
+	color: #c52b2b;/*#c52b2b*/
+}
+
+/*EL PRIMER ASTERISCO DEL TITULO*/
+span#treset{	
+	color: #ff4a4a;
+}
+/*EL ULTIMO ASTERISCO DEL TITULO*/
+span#trandom{	
+	color: #ff4a4a;
+}
+
+/*MENSAJE DE PRUEBE A TOCAR TODO*/
+div#pruebe span{
+	color: lightgray;
+	font-size: calc(8px + 0.25vw);
+
+		font-family: serif;
+		font-style: italic;
+}
+
+/*CAJA QUE CONTIENE EL MENSAJE DE PRUEBE A TOCAR TODO*/
+div#pruebe{
+	transition: opacity 3s linear;
+		opacity: 1;
+		text-align: center;
+}
+
+
+/*KEYFRAMES DE USA SERIE DE COLORES, APLICADA A LOS CARACTERES DEL TITULO MEDIANTE JS*/
+@keyframes colores {
+  0%   {color: #66E64D;}
+  4%  {color: #4D80CC;}
+  8%  {color: #9900B3;}
+  12%  {color: #E64D66;}
+  16%  {color: #CCCC00;}
+  20%  {color: #809980;}
+  24%  {color: #B366CC;}
+  28%  {color:#FF1A66;}
+  32% {color: #66994D;}
+  36% {color: #80B300;}
+  40% {color: #6680B3;}
+  44% {color: #CC80CC;}
+  48% {color: #999933;}
+  52% {color: #6666FF;}
+  56% {color: #00B3E6;}
+  60% {color: #B366CC;}
+  64% {color: #66664D;}
+  68% {color: #FF33FF;}
+  72% {color: #4D8066;}
+  76% {color: #66664D;}
+  80% {color: #99E6E6;}
+  84% {color: #6680B3;}
+  88% {color: #3366E6;}
+  92% {color: #66994D;}
+  96% {color: #CCFF1A;}
+  100% {color: #1AFF33;}
+}
+
+
+
+/*FUENTE DEL TITULO*/
+@font-face {
+  src: url('/plugins/indexMS3/rsc/fonts/high.ttf');
+  font-family: titulo;
+  }
+
+/*REPRODUCTR DE MUSICA*/
+#musica{
+	position:  fixed;
+	right: 3vh;
+	top: 3vh;
+	transition: opacity 1.5s ease-in;
+	opacity: 0;/*EN PRINCIPIO DE ENCONTRARA OCULTO HASTA HACERLO VISIBLE MEDIANTE JS*/
+}
+
+
+
+/*KEYFRAMES DE USA SERIE DE COLORES, APLICADA AL FONDO WEB (#CONTENEDOR1) MEDIANTE JS*/
+@keyframes fondo {
+  0%   {filter: hue-rotate(0deg);}
+
+  100% {filter: hue-rotate(360deg);}
+}
+
+
+
+#yari{
+    animation-duration: 3s;/*tiempo que dura la animacion*/
+    animation-timing-function: ease-out;/*EASE-OUT movimiento NO lineal , reduce la velocidad al final de la animacion, para hacerla mas natural*/
+
+    position: fixed;
+    z-index: 9;/*APARECERA POR DELNATE DE EL RESTO DE CAJAS*/
+    right: -20vh;
+    top: 20vh;
+	display: none;/*NO EXISTIRA HASTA DARLE VALOR BLOCK MEDIANTE JS*/
+	}
+
+/*KEYFRAMES DE UNA TRANSLACION, APLICADA A LA IMAGEN DE LA AVEZTRUZ MEDIANTE JS*/
+@keyframes ave{
+    0% {
+        right: -90vh;
+    }
+ 
+    100% {
+        right: -20vh;
+    }
+}
+
+
+
+/*MEDIAQUERY PARA REDUCIR EL TAMAÑO DE FUENTE, PARA QUE ENTRE EN PANTALLA SIN HACER SALTOS DE LINEA*/
+/*Y PARA MODIFICAR LA ORGANIZACIOND EL MENU*/
+@media screen and (max-width: 700px) {
+	h1#titulo{
+	font-size: 3.8em;/*REDUCE EL TAMAÑO D FUENTE EN EL TITULO*/
+	}
+
+	#header{
+    grid-template-areas: /*CAMBIA LA ORGANIZACION DEL MENU*/
+    "a a b b"
+    "c c d d"
+    "e e f f";
+	}
+}
+
+
+/*
+@media screen and (max-width: 700px) and (min-height: 550px){
+	h1#titulo{
+	font-size: 3.5em;
+	padding-bottom: 100px;
+	}
+}
+
+
+@media screen and (max-width: 700px) and (max-height: 550px){
+	h1#titulo{
+	font-size: 3.5em;
+	padding-bottom: 100px;
+	}
+}
+
+@media screen and (min-width: 700px) and (max-height: 550px){
+	h1#titulo{
+		
+	padding-bottom: 10px;
+	}
+}
+
+@media screen and (max-height: 500px) {
+	#desplegar{
+	}
+}
+*/
+

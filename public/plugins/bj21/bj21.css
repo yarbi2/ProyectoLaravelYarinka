@@ -1,0 +1,421 @@
+*{/*Formatea todas las etiquetas*/
+	user-select: none;
+	outline: none;
+
+}
+
+
+/*MUUUYYY IMPORTANTE!! VARIABLES ROOT DE CSS*/
+/*FACILITAN ENORMEMENTE LA MODIFICACION DE DISTINTOS ELEMENTOS AL MISMO TIEMPO, ATACANDO MEDIANTE JS A ESTAS VARIABLES EN VEZ DE A LAS ETIQUETAS*/
+:root {/*LAS VARIABLES SON USADAS PARA EL GRAFICO HECHO CON CSS, PARA PODER ANIMARLO AAL GUSTO MEDIANTE JS*/
+  --rotaciona: 0deg;  
+  --rotacionb: 0deg;
+  --x: '0 %';
+}
+
+body{/*el body SE CENTRA TOTALMENTE*/
+
+	background-color: lightgreen;
+	color: white;
+	font-size: 5vh;
+
+	/*IMPORTANTE!! centrado total*/
+  	margin: auto;
+	position: absolute;
+	top: 0; left: 0; bottom: 0; right: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/*IMPORTANTE!! para partir desde un body que se adapte 100% al centro*/
+
+}
+
+
+#centro {	/*contiene las cartas dividas en dos etiquetas*/
+	margin-left: auto;
+	margin-right: auto;
+	min-width: 80vw; 	/*anchura minima*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1vh solid yellow;
+	border-style: dashed;/*linea cortada amarilla que delimita la zona de juego de cada jugador*/
+	border-radius: 1vh;
+}
+
+#todo{/*aplica a todo*/
+	display: inline-block;/*organizacion en linea de izq a drch y en bloques*/
+
+}
+
+.numint{/*numero interior blanco del Palo de la carta*/
+	margin: 3vh;
+
+	/*Centrado*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: 15vh;
+	height: 15vh;
+	
+}
+
+
+/*IMPORTANTE!! CLASES DONDE SE DIBUJAN MEDIANTE CSS LAS FORMAS DE LOS PALOS (corazones, picas...)*/
+
+.corazon{/*clase del Palo Corazones*/
+	
+	background-color: darkred;
+	/*IMPORTANTE!! MEDIANTE CLIP-PATH PODEMOS HACER TRANSPARENCIAS EN UNA CAJA COLOREADA O CON IMAGENES*/
+	/* ENVIANDOLE PAREJAS DE CORDENADAS X e Y PARA QUE HAGAN UN RECORRIDA Y CORTEN LA CAJA AL GUSTO*/
+	clip-path: polygon(52% 27%, 66% 9%, 90% 10%, 99% 34%, 86% 68%, 50% 100%, 15% 69%, 0 39%, 9% 13%, 36% 7%);/*clase del Palo Corazones*/
+	
+}
+/*APLICA IGUAL A LAS SIGUIENTES*/
+
+.diamante{/*clase del Palo Diamantes*/
+		
+	background-color: darkred;
+	clip-path: polygon(50% 0, 70% 30%, 100% 50%, 70% 70%, 50% 100%, 30% 70%, 0 50%, 30% 30%);
+}
+
+.trebol{/*clase del Palo Treboles*/
+	
+	background-color: black;
+	/*clip-path: polygon(0 17%, 35% 25%, 26% 0, 73% 0, 65% 25%, 100% 16%, YY86% 66%, 55% 49%, 56% 100%, 43% 100%, 43% 49%, 10% 64%);*/
+	/*clip-path: polygon(50% 41%, 58% 16%, 84% 14%, 98% 40%, 83% 67%, 50% 100%, 23% 73%, 3% 44%, 10% 22%, 36% 17%);*/
+	clip-path: polygon(3% 29%, 38% 35%, 18% 0, 79% 0, 61% 34%, 100% 28%, 85% 80%, 54% 65%, 60% 100%, 40% 100%, 46% 65%, 20% 82%);
+}
+
+.pica{/*clase del Palo Picas*/
+	
+	background-color: black;
+	clip-path: polygon(9% 67%, 24% 33%, 50% 9%, 78% 31%, 92% 65%, 61% 84%, 89% 85%, 89% 100%, 12% 100%, 11% 86%, 42% 85%);
+}
+
+
+
+
+
+
+span{/* numeros exteteriores d la carta */
+	margin: 1vh;
+}
+
+span.drc{/* numero inferior invertido de la carta */
+	float: right;
+	transform: rotate(180deg);
+	line-height: -1vh;
+}
+
+.fondocarta{/* Fondo de la carta mientras esta Boca Abajo, esta estado se actualiza mediante js */
+	
+	background:  repeating-linear-gradient(to top left, #f3d03e, #16a085);/*gradiente de colores de la parte trasera d la carta*/
+	border-radius: 3%;
+	border: 0.6vh solid black;
+	margin: 1vh;
+
+	min-height: 35vh;
+
+	/* Centrado */
+	display: block;
+	justify-content: center;
+	align-items: center;
+
+
+	cursor: pointer;/*el cursor se vuelve una mano al pasar por encima*/
+}
+
+.rojo{/*Clase que da color a la fuente */
+	color: darkred;
+}
+.negro{/*Clase que da color a la fuente */
+	color: black;
+}
+
+
+/*Alternativa IMPORTANTE!! PSEUDOELEMENTO NTH-CHILD() NOS PERMITE SELECCIONAR ETIQUETAS CONCRETAS QUE SON HERMANAS Y TENGAN UN PADRE EN COMUN */
+div.fondocarta:nth-child(1){/*La primera etiqueta div con clase fondocarta */
+	transform: rotate(10deg);/*aplica una rotacion para dr mas naturalidad a las cartas*/
+}
+div.fondocarta:nth-child(2){/*La segunda etiqueta div con clase fondocarta */
+	transform: rotate(-7deg);/*aplica una rotacion para dr mas naturalidad a las cartas*/
+}
+div.fondocarta:nth-child(3){/*La tercera etiqueta div con clase fondocarta */
+	transform: rotate(4deg);/*aplica una rotacion para dr mas naturalidad a las cartas*/
+}
+div.fondocarta:nth-child(4){/*La cuarta etiqueta div con clase fondocarta */
+	transform: rotate(-2deg);/*aplica una rotacion para dr mas naturalidad a las cartas*/
+}
+
+
+h1{/*El titulo grabado en la mesa de Juego*/
+	font-family: tit;/*estilo de letra descagado en local*/
+	text-align: center;
+	font-weight: lighter;
+	margin: 3vh;
+}
+
+@font-face {/*enlazando el tipo de letra descargado en local*/
+    font-family: tit;/*dando nombre a nuestro tipo de letra para usarlo*/
+  src: url('/plugins/bj21/rsc/fonts/tit.otf');
+}
+
+
+/*IMPORTANTE!! CLASE donde CREAMOS EL GRAFICO TOTALMENTE CON CSS, y lo preparamos para animarlo mediante js a necesidad*/
+#caja{/*CIRCULO PRINCIPAL DE DOS COLORES CON ROTACION Y DOS PSEUDOELEMNTOS ASOCIADOS*/
+	
+	font-size: 0.5em;
+	font-weight: bolder;/*Negrita*/
+	color: rgb(35, 89, 89);
+	margin: auto;
+	
+	border-radius: 50%;
+	width: 15vh;
+	height: 15vh;
+
+	background: linear-gradient(to top, rgb(35, 89, 89) 50%, rgba(35, 89, 89,0.2) 50%);/*mitad del circulo azul marino y la otra mitad delmismo color pero transparente al 20%*/
+	position: fixed;/*fijado en pantalla*/
+	top: 44vh;
+	right: 8vh;
+	/*MUYY MPORTANTE!!GIRO DE LA CAJA REDONDA QUE REPRESENTARA EL PROGRESO DEL GRAFICO*/
+	/*SE UTILIZA LA VARIABLE DE ROOT --ROTACIONA EXPLICADA POSTERIORMENTE*/
+	transform:  rotate(var(--rotaciona));/*ROTA LA CAJA PRINCIPAL Y SUS SEUDOELEMENTOS TAMBIEN*/
+
+	z-index: -9;/*lo coloca en el plano mas alejado en el eje Z*/
+
+	/*centrado*/
+	display: flex;
+	justify-content: center;
+
+}
+
+
+/*MUYY MPORTANTE!! PSEUDOELEMENTO :BEFORE*/
+/*CIRCULO MAS PEQEÑO Q EL PRINCIPAL, que hace de transparencia sobre el circulo principal */
+/*haciendo la forma de una ROSQUILLA*/
+#caja:before{
+	content: "";/*CONTENIDO QUE TENDRA ESTE PSEUDOELEMENTO, EQUIVALENTE A LO QUE METERIAMOS EN UNA ETIQUETA EN HTML*/
+
+ 	width: 15vh;
+	height: 15vh;
+	font-size: 0.5em;
+
+	position: absolute;/*CON LOS PSEUDOELEMENTOS SE PUEDE TRABAJAR EN ABSOLUTE SIN DEJAR DE SER RESPONSIVE, DADO QUE VAN ASOCIADOS AL PRINCIPAL*/
+	top: 1vh;
+	left: 0;
+	padding: 0.8rem;
+	background: lightgreen content-box;/*colorea interiormente con el color del fondo y permite mantener la psocion declarada antes mediante content-box*/
+	border-radius: 50%;
+	box-sizing: border-box;/*permite mntener la posicion antes declarada*/
+	text-align: center;
+
+	z-index: 99;/*lo trae al primer plane de la web, por encima de todas las demas*/
+		transform: rotate(var(--rotacionb));/*direccion contraria a la caja padre y mismo valor para corregir y mantenerse en el lugar*/
+	font-size: 2rem;
+	line-height: 8rem;/*12rem-2rem para el medio y 12rem-2rem-2rem para centro superior*/
+}
+
+/*MUYY MPORTANTE!! PSEUDOELEMENTO :AFTER*/
+/*CAJA MITAD TRANSPARENTE MITAD DE COLOR DEL FONDO, QUE FINALIZA DE CREAR EL GRAFICO  */
+/*haciendo la forma de una ROSQUILLA*/
+#caja:after{
+	content: "";
+ 	width: 15vh;
+	height: 15vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: linear-gradient(transparent 50%, lightgreen 50%);/*CUADRADO MITAD TRANSPARENTE MITAD COLOR DEL FONDO, partiendo desde arriba*/
+	border-radius: 50%;
+	transform: scale(1.1) rotate(var(--rotacionb));/*para que no se vean bordes despreciable al calculo   IMPORTANTE!! ->  scale(1.1)*/
+	text-align: center;
+	font-size: 1rem;
+	line-height: 13rem;
+
+}
+
+
+#cartera{/*caja que contiene la informacion de el dinero que tiene el jugador*/
+	position: fixed;/*Fijado a pantalla*/
+	top: 52vh;
+	right: 3vh;	
+	font-size: 0.8em;
+	text-align: center;
+	color: rgb(35, 89, 89);
+	display: flex;
+
+}
+
+
+
+#vel{/*Muestra el progreso del grafico con numeros (100$)*/
+	text-align: center;	
+	position: fixed;
+	top: 60vh;
+	right: 12vh;
+	
+	font-size: 0.8em;
+	z-index: 9;/*lo trae al primer plano de la web*/
+	margin-top: -12vh;
+	color: rgb(35, 89, 89);/*color azul marino*/
+
+	/*centrado*/
+	display: flex;
+	justify-content: center;
+	align-content: center;
+
+}
+
+.boton{/*formato para cada uno de los botones*/
+
+	/*centrado*/
+	display: flex;
+  	justify-content: center;
+  	align-items: center;
+
+}
+
+#comprobar{/*el boton coprobar*/
+	display: none;/*En un inicio no estara en la pagina*/
+}
+
+#resetear{/*el boton resetear*/
+	display: none;/*En un inicio no estara en la pagina*/
+}
+
+#botones{/*formato para todos los botones*/
+	display: inline;/*se organizan en linea*/
+	position: fixed;/*fijado a pantalla*/
+	top: 40vh;
+	right: 30vh;
+	/*centrado*/
+  	justify-content: center;
+  	align-items: center;
+
+}
+
+button{
+	margin: 1vh;
+	cursor: pointer;
+}
+
+.botonint{/*da formato a los botones con forma de ficha*/
+	height: 7vh;
+	width: 7vh;
+	border-radius: 50%;
+	box-shadow: 3px 3px 0 #3a3a3a;
+
+	cursor: pointer;
+
+}
+
+#botonsubir1{/*boton +1$*/
+	font-size: 0.5em;
+	color: white;
+	border: 0.5vh solid white;
+	background-color: darkred;
+}
+
+#botonsubir3{/*boton +3$*/
+	font-size: 0.5em;
+	color: white;
+	border: 0.5vh solid white;
+	background-color: #020d4c;
+
+}
+#botonsubir5{/*boton +5$*/
+	font-size: 0.5em;
+	color: white;
+	border: 0.5vh solid white;
+	background-color: #054201;
+
+}
+#botonsubir10{/*boton +10$*/
+	font-size: 0.5em;
+	color: black;
+	border: 0.5vh solid black;
+	background-color: white;
+
+}
+
+
+.mensaje{/*mensaje de la izquierda mostrado en pantalla, Resultado de quien gana y con que cartas*/
+	color: darkred; 
+	font-size: 0.6em;
+	position: fixed;
+	top: 50vh;
+	left: 10vh;
+}
+
+/*IMPORTANTE!! 2 CARTAS DEL CRUPIER AUN ESTAN POR APARECER, Se mantinen en display: none por ahora*/
+#g{
+	display: none;
+}
+#h{
+	display: none;
+}
+
+
+/*IMPORTANTE!! 2 DE TUS CARTAS AUN ESTAN POR APARECER, Se mantinen en display: none por ahora*/
+#c{
+	display: none;
+}
+
+#d{
+	display: none;
+}
+
+
+#fichas{/*da mas formato a las fichas*/
+	display: flex;
+	position: fixed;
+	top: 42vh;
+	right: 32vh;
+
+}
+#cmd{/*los botones del juego :  APOSTAR BAJAR MOSTRAR RESETEAR*/
+	display: flex;
+	position: fixed;
+	top: 52vh;
+	right: 40vh;
+
+
+}
+
+
+
+
+#index{/*boton para volver al index*/
+	position: fixed;
+	top: 2vh;
+	right: 5vw;
+	min-width: 60px;
+	width: calc(15px + 5vw);/*IMPORTANTE!! Mediante calc podemos hacer relaciones netre vh y vw y lograr un resultado responsive en ambos ejes*/
+	height: calc(10px + 5vh);/*IMPORTANTE!! Mediante calc podemos hacer relaciones netre vh y vw y lograr un resultado responsive en ambos ejes*/
+	border: 0.3vh solid darkblue;
+	border-radius: 15%;
+	background:  repeating-linear-gradient(to bottom right, #5b247a, #1bcedf);/*color interior de gradiente de color azul claro a oscuro partiendo de abajo a la derecha*/
+	color: white;
+	font-size: calc(2vh + 0.5vw);/*IMPORTANTE!! Mediante calc podemos hacer relaciones netre vh y vw y lograr un resultado responsive en ambos ejes*/
+	font-style: bold;
+	cursor: pointer;
+
+	/*centrado*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+
+
+}
+
+/*IMPORTANTE!! MEDIAUQERY para reducir el mensaje de quien gana y q no moleste en pantalla en caso de tener menor anchura de 700px*/
+@media screen and (max-width: 700px) {
+	.mensaje{
+		font-size: 0.35em;
+
+		left: 5vh;
+	}
+}
